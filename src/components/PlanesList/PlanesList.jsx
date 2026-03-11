@@ -7,6 +7,8 @@ import { Planes } from '@/components/Planes/Planes.jsx';
 import { getBgColorCSSModule } from '@/utils/getBackgroundColor.js';
 
 
+
+
 //! Для визначення кольору фону картки в залежності від значення "year"
 
 export function PlanesList({ items }) {
