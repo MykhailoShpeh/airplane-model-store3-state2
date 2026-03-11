@@ -1,12 +1,12 @@
 {
-  "name": "airplane-model-store2-stylization3",
-  "homepage": "https://MykhailoShpeh.github.io/airplane-model-store2-stylization3",
+  "name": "airplane-model-store3-state-1",
+  "homepage": "https://MykhailoShpeh.github.io/airplane-model-store3-state-1",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/airplane-model-store2-stylization3/",
+    "build": "vite build --base=/airplane-model-store3-state-1/",
     "lint": "eslint .",
     "preview": "vite preview"
   },

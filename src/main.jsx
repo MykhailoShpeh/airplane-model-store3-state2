@@ -8,7 +8,7 @@ import { theme } from '@/constants/theme.js';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename="/airplane-model-store2-stylization3">
+    <BrowserRouter basename="/airplane-model-store3-state-1">
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
