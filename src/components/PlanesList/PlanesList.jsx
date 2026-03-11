@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 
-// import css from "./PlanesList.module.css";
+import css from "./PlanesList.module.css";
 
 import { Planes } from '@/components/Planes/Planes.jsx'; 
 
 import { getBgColorCSSModule } from '@/utils/getBackgroundColor.js';
-
-import { List, Item } from './PlanesList.styled.jsx';
 
 
 //! Для визначення кольору фону картки в залежності від значення "year"
@@ -14,13 +12,13 @@ import { List, Item } from './PlanesList.styled.jsx';
 export function PlanesList({ items }) {
     console.log(getBgColorCSSModule(2000))
     return (
-        <List>
+        <ul
+            className={css.list}>
             {items.map(item =>
-                <Item
-                    key={item.id} yearOfManufacture={item.info.year}>
-                    {/* // key={item.id}> */}
+                <li
+                    className={css[getBgColorCSSModule(item.info.year)]}
+                    key={item.id} >
                     <Planes
-                        urlWiki={item.url.wikipedia}
                         urlMain={item.url.main}
                         urlPromotional={item.url.promotional}
                         urlActual={item.url.actual}
@@ -35,9 +33,9 @@ export function PlanesList({ items }) {
                         price={item.info.price}
                         description={item.info.description}
                     />
-                </Item>
+                </li>
             )}
-        </List>
+        </ul>
     );
 };
 

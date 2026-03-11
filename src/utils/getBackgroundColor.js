@@ -49,23 +49,3 @@ export function getBgColorCSSModule(year) {
     console.log("className:", className); //!
     return className;
 };
-
-//todo: Emotion var. 3
-export function getBgColorEmotion({ yearOfManufacture, theme }) {
-    // console.log("@emotion/styled_yearOfManufacture:", yearOfManufacture); //!
-    let bgColor = theme.bсgColor.old;
-    if (yearOfManufacture > 1945) bgColor = theme.bсgColor.last;
-    if (yearOfManufacture > 1999) bgColor = theme.bсgColor.now;
-    return bgColor;
-};
-
-
-
-//todo: Emotion var. 3.1
-// export function getBgColorEmotion(props) {
-//     // console.log("@emotion/styled_props.children.props.year:", props.children.props.year); //!
-//     let bgColor = '#ffdb92';
-//     if (props.children.props.year > 1945) bgColor = '#d2fdbd';
-//     if (props.children.props.year > 1999) bgColor = '#d6f1ff';
-//     return bgColor;
-// };

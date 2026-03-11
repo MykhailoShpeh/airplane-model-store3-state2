@@ -11,7 +11,7 @@
 
 .textFieldValue {
     font-weight: 400;
-        font-style: italic;
+    font-style: italic;
 }
 
 .imageTitles {
@@ -43,7 +43,7 @@
     border-radius: 4px;
 }
 
-.button {
+.but {
     width: 70%;
     margin: 20px auto;
     padding: 16px 32px;
