@@ -67,6 +67,7 @@ export class App extends Component {
           </button>
 
         </div>
+        {/* <Filter /> */}
         <Section isOn={this.state.isPlanes} title="Магазин моделей літаків">
           <PlanesList items={planes} />
         </Section >

@@ -76,7 +76,7 @@ export function Planes({
                 className={css.imgBox}>
                 {urlActual.map(item =>
                     <img
-                        // key={item} //! поки що не унікальний
+                        key={item} //! поки що не унікальний
                         src={item}
                         alt={nameBrief}
                         className={css.img}
