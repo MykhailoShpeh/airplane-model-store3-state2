@@ -5,6 +5,7 @@ import { Section } from '@/components/Section/Section.jsx';
 import planes from '@/json/planes.json';
 import helicopters from '@/json/helicopters.json';
 import { PlanesList } from '@/components/PlanesList/PlanesList.jsx';
+import { Filter } from '@/components/Filter/Filter.jsx'
 
 // export function App() {
 export class App extends Component {
@@ -41,37 +42,45 @@ export class App extends Component {
     return (
       <>
         {/*//!  Filter */}
-        <div className={css.filterBox}>
-          <button
-            className={css.buttonAllFiltration}
-            type="button"
-            onClick={this.allFiltration}
-          >
-            ВСІ
-          </button>
-
-          <button
-            className={css.buttonPlaneFiltration}
-            type="button"
-            onClick={this.planeFiltration}
-          >
-            Літаки
-          </button>
-
-          <button
-            className={css.buttonHelicopterFiltration}
-            type="button"
-            onClick={this.helicopterFiltration}
-          >
-            Вертольоти
-          </button>
-
-        </div>
-        {/* <Filter /> */}
-        <Section isOn={this.state.isPlanes} title="Магазин моделей літаків">
+        {/* <div className={css.filterBox}>
+                <button
+                    className={css.buttonAllFiltration}
+                    type="button"
+                    onClick={this.allFiltration}
+                >
+                    ВСІ
+                </button>
+        
+                <button
+                    className={css.buttonPlaneFiltration}
+                    type="button"
+                    onClick={this.planeFiltration}
+                >
+                    Літаки
+                </button>
+        
+                <button
+                    className={css.buttonHelicopterFiltration}
+                    type="button"
+                    onClick={this.helicopterFiltration}
+                >
+                    Вертольоти
+                </button>
+        
+                </div> */}
+        <Filter
+          onAll={this.allFiltration}
+          onPlanes={this.planeFiltration}
+          onHelicopters={this.helicopterFiltration}
+        />
+        <Section
+          isOn={this.state.isPlanes}
+          title="Магазин моделей літаків">
           <PlanesList items={planes} />
         </Section >
-        <Section isOn={this.state.isHelicopters} title="Магазин моделей гелікоптерів">
+        <Section
+          isOn={this.state.isHelicopters}
+          title="Магазин моделей гелікоптерів">
           <PlanesList items={helicopters} />
         </Section >
       </>
