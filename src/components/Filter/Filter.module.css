@@ -47,3 +47,8 @@
     composes: button;
     border: 6px #9accf5 solid;
 }
+
+.buttonBiplaneFiltration {
+    composes: button;
+    border: 6px #f59aa9 solid;
+}
