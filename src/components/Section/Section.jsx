@@ -5,7 +5,8 @@ import css from "./Section.module.css"; //! CSS-модулі
 export function Section({ isOn = true, title, children, bgColor }) {
     return (
         <>
-            {isOn && <section style={{backgroundColor: bgColor,}}>
+            {isOn &&
+                <section style={{ backgroundColor: bgColor, }}>
                 {/* //! CSS-модулі з композицією класів */}
                 {/* {title && <h2 className={`${css.title} ${css.robotoBold}`}>{title}</h2>} */}
                 {/* //! CSS-модулі з composes */}

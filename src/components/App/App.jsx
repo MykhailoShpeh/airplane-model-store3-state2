@@ -13,42 +13,55 @@ export class App extends Component {
 
   //!Фільтрація var.1
   state = {
-    isPlanes: false,
-    isHelicopters: false,
-    isAll: false,
+    // isPlanes: false,
+    // isHelicopters: false,
+    // isAll: false,
     bgColor: "black",
-  };
+    aircraftTitle: "Магазин моделей літальних апаратів",
+    aircraftArray: aircrafts
+  }
 
   
   allFiltration = () => {
     console.log("All")
 
     this.setState({
-      isAll: true,
-      isPlanes: false,
-      isHelicopters: false,
-      bgColor: 'green'
+      // isAll: true,
+      // isPlanes: false,
+      // isHelicopters: false,
+      bgColor: 'green',
+      aircraftTitle: "Магазин моделей літальних апаратів",
+      aircraftArray: aircrafts
     });
-
+    console.log("aircraftArray: ", aircrafts);
   };
 
   planeFiltration = () => {
     console.log("Planes")
+    const planesArray = aircrafts.filter(item => item.aircraftType === "plane" || item.aircraftType === "biplane")
+    console.log("planesArray: ", planesArray);
     this.setState({
-      isAll: false,
-      isPlanes: true,
-      isHelicopters: false,
-      bgColor: 'yellow'
+      // isAll: false,
+      // isPlanes: true,
+      // isHelicopters: false,
+      bgColor: 'yellow',
+      aircraftTitle: "Магазин моделей літаків",
+      aircraftArray: planesArray
     });
   };
 
   helicopterFiltration = () => {
     console.log("Helicopters")
+
+    const helicoptersArray = aircrafts.filter(item => item.aircraftType === "helicopter")
+    console.log("helicoptersArray: ", helicoptersArray);
     this.setState({
-      isAll: false,
-      isPlanes: false,
-      isHelicopters: true,
-      bgColor: 'lightblue'
+      // isAll: false,
+      // isPlanes: false,
+      // isHelicopters: true,
+      bgColor: 'lightblue',
+      aircraftTitle: "Магазин моделей вертольотів",
+      aircraftArray: helicoptersArray
     });
   };
 
@@ -103,7 +116,7 @@ export class App extends Component {
           onPlanes={this.planeFiltration}
           onHelicopters={this.helicopterFiltration}
         />
-        <Section
+        {/* <Section
           isOn={this.state.isPlanes}
           title="Магазин моделей літаків"
           bgColor={this.state.bgColor}
@@ -116,13 +129,14 @@ export class App extends Component {
           bgColor={this.state.bgColor}
         >
           <PlanesList items={helicopters} />
-        </Section >
+        </Section > */}
         <Section
-          isOn={this.state.isAll}
-          title="Магазин моделей літальних апаратів"
+          // isOn={this.state.isAll}
+
+          title={this.state.aircraftTitle}
           bgColor={this.state.bgColor}
         >
-          <PlanesList items={aircrafts} />
+          <PlanesList items={this.state.aircraftArray} />
         </Section >
         {/* <Section
           // isOn={this.state.isPlanes}>
