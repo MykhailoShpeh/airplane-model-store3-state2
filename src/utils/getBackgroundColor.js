@@ -46,6 +46,6 @@ export function getBgColorCSSModule(year) {
     let className = "item";
     if (year > 1945) className = "itemLast";
     if (year > 1999) className = "itemCurrent";
-    console.log("className:", className); //!
+    // console.log("className:", className); //!
     return className;
 };

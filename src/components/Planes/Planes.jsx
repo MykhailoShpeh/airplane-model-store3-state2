@@ -29,8 +29,8 @@ import { FcTrademark } from "react-icons/fc";
 //! Reexport
 import { iconSize, iconColor } from '@/constants'
 
-console.log("iconSize: ", iconSize);
-console.log("iconColor: ", iconColor);
+// console.log("iconSize: ", iconSize);
+// console.log("iconColor: ", iconColor);
 
 export function Planes({
     urlMain = defaultImage, //! Дефолтне зображення
@@ -53,7 +53,7 @@ export function Planes({
 
     // console.log(startTime, endTime);
     const different = getManufacturingYears(startTime, endTime)
-    console.log('different:', different)
+    // console.log('different:', different)
     return (
         <>
             <h3
