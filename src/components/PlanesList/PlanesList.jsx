@@ -34,6 +34,7 @@ export function PlanesList({ items }) {
                         type={item.info.type}
                         price={item.info.price}
                         description={item.info.description}
+                        backgroundCardTitle={item.aircraftType}
                     />
                 </li>
             )}

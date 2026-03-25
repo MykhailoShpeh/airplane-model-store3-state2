@@ -8,7 +8,7 @@
     outline: 1px solid red;
 }
 
-.item {
+.planesItem {
     display: grid;
     gap: 12px;
     padding: 10px;
@@ -20,16 +20,26 @@
     outline: 1px solid grey;
 }
 
-/** backgroundColor: '#d2fdbd', // "year"  1946 - 1999 - last */
-.itemLast{
-    composes: item;
+/** backgroundColor: '#ffd1d1',  "year" до 1939 - (WWI (1914–1918) + The "Golden Age" of aviation (1918–1939)) */
+.planesItemWWIGoldenAge {
+    composes: planesItem;
+    background-color: #ffd1d1;
+}
+
+/** backgroundColor: '#ffdb92',  "year" 1939–1945 - (WWII (1939–1945)) */
+.planesItemWWII {
+    composes: planesItem;
+    background-color: #ffdb92;
+}
+
+/** backgroundColor: '#d2fdbd',  "year" 1946-1999 - (Jet age (1946–1999)) */
+.planesItemJetAge {
+    composes: planesItem;
     background-color: #d2fdbd;
 }
 
-/** backgroundColor: '#d6f1ff', // "year" від 2000 - current */
-
-/* todo: var.2  та var.2.1 */
-.itemCurrent {
-    composes: item;
+/** backgroundColor: '#d6f1ff',  "year" від 2000 - (Нинішнє століття (2000-до наших днів)) */
+.planesItemCurrentAge {
+    composes: planesItem;
     background-color: #d6f1ff;
 }

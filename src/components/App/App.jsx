@@ -18,7 +18,8 @@ export class App extends Component {
     // isAll: false,
     bgColor: "black",
     aircraftTitle: "Магазин моделей літальних апаратів",
-    aircraftArray: aircrafts
+    aircraftArray: aircrafts,
+    buttonBackground: ""
   }
 
   

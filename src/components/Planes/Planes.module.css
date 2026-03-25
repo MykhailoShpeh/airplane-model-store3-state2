@@ -19,14 +19,29 @@
     color: blue;
 }
 
-.planeTitle {
+.title {
     margin-bottom: 12px;
     padding: 12px 16px;
     font-size: 32px;
     text-align: center;
     border-radius: 8px;
-    background-color: yellow;
+    background-color: grey;
     color: blue;
+}
+
+.planeTitle {
+    composes: title;
+        background-color: yellow;
+}
+
+.biplaneTitle {
+    composes: title;
+    background-color: #f59aa9;
+}
+
+.helicopterTitle {
+    composes: title;
+    background-color: #9accf5;
 }
 
 .imgBox {

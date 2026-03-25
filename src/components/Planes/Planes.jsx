@@ -33,6 +33,7 @@ import { iconSize, iconColor } from '@/constants'
 // console.log("iconColor: ", iconColor);
 
 export function Planes({
+    backgroundCardTitle,
     urlMain = defaultImage, //! Дефолтне зображення
     urlPromotional,
     urlActual,
@@ -51,13 +52,33 @@ export function Planes({
         urlActual.map
     }
 
+    console.log("backgroundCardTitle: ", backgroundCardTitle);
+
+    function getBgCardTitle(backgroundCardTitle) {
+        switch (backgroundCardTitle) {
+            case 'plane':
+                return'planeTitle';
+        
+            case 'biplane':
+                return 'biplaneTitle';
+            
+            case 'helicopter':
+                return 'helicopterTitle';
+            
+            default:
+                return "title";
+        }
+    }
+
     // console.log(startTime, endTime);
     const different = getManufacturingYears(startTime, endTime)
     // console.log('different:', different)
     return (
         <>
             <h3
-                className={css.planeTitle}>
+                // className={css.planeTitle}
+                className={css[getBgCardTitle(backgroundCardTitle)]}
+            >
                 {nameBrief}
             </h3>
             <img src={urlMain} alt={nameBrief} />
