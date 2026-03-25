@@ -1,11 +1,14 @@
 import css from './Filter.module.css';
 
 
-export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters }) {
+export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, activeButton }) {
+    console.log("activeButton", activeButton);
+
     return (
         <div className={css.filterBox}>
             <button
-                className={css.buttonAllFiltration}
+                // className={css.buttonAllFiltration}
+                className={activeButton === "allButton" ? `${css.buttonAllFiltration} ${css.active}` : css.buttonAllFiltration}
                 type="button"
                 onClick={onAll}
             >
@@ -13,7 +16,8 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters }) {
             </button>
 
             <button
-                className={css.buttonPlaneFiltration}
+                // className={css.buttonPlaneFiltration}
+                className={activeButton === "planesButton" ? `${css.buttonPlaneFiltration} ${css.active}` : css.buttonPlaneFiltration}
                 type="button"
                 onClick={onPlanes}
             >
@@ -21,7 +25,8 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters }) {
             </button>
 
             <button
-                className={css.buttonBiplaneFiltration}
+                // className={css.buttonBiplaneFiltration}
+                className={activeButton === "biplanesButton" ? `${css.buttonBiplaneFiltration} ${css.active}` : css.buttonBiplaneFiltration}
                 type="button"
                 onClick={onBiplanes}
             >
@@ -29,7 +34,8 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters }) {
             </button>
 
             <button
-                className={css.buttonHelicopterFiltration}
+                // className={css.buttonHelicopterFiltration}
+                className={activeButton === "helicoptersButton" ? `${css.buttonHelicopterFiltration} ${css.active}` : css.buttonHelicopterFiltration}
                 type="button"
                 onClick={onHelicopters}
             >

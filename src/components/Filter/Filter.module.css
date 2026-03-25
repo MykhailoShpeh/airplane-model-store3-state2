@@ -52,3 +52,10 @@
     composes: button;
     border: 6px #f59aa9 solid;
 }
+
+/*//! Візуалізація активної кнопки */
+.active {
+    color: #c51900;
+    box-shadow: none;
+    outline: 1px #902a00 solid;
+}

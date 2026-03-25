@@ -19,7 +19,9 @@ export class App extends Component {
     bgColor: "black",
     aircraftTitle: "Магазин моделей літальних апаратів",
     aircraftArray: aircrafts,
-    buttonBackground: ""
+    buttonBackground: "",
+    //! Візуалізація активної кнопки 
+    activeButton: "allButton"
   }
 
   
@@ -32,7 +34,8 @@ export class App extends Component {
       // isHelicopters: false,
       bgColor: 'green',
       aircraftTitle: "Магазин моделей літальних апаратів",
-      aircraftArray: aircrafts
+      aircraftArray: aircrafts,
+      activeButton: "allButton"
     });
     console.log("aircraftArray: ", aircrafts);
   };
@@ -47,7 +50,8 @@ export class App extends Component {
       // isHelicopters: false,
       bgColor: 'yellow',
       aircraftTitle: "Магазин моделей літаків",
-      aircraftArray: planesArray
+      aircraftArray: planesArray,
+      activeButton: "planesButton"
     });
   };
 
@@ -61,7 +65,8 @@ export class App extends Component {
       // isHelicopters: false,
       bgColor: '#f59aa9',
       aircraftTitle: "Магазин моделей біпланів",
-      aircraftArray: biplanesArray
+      aircraftArray: biplanesArray,
+      activeButton: "biplanesButton"
     });
   };
 
@@ -76,7 +81,8 @@ export class App extends Component {
       // isHelicopters: true,
       bgColor: 'lightblue',
       aircraftTitle: "Магазин моделей вертольотів",
-      aircraftArray: helicoptersArray
+      aircraftArray: helicoptersArray,
+      activeButton: "helicoptersButton"
     });
   };
 
@@ -131,6 +137,8 @@ export class App extends Component {
           onPlanes={this.planeFiltration}
           onBiplanes={this.biplanesFiltration}
           onHelicopters={this.helicopterFiltration}
+          //! Візуалізація активної кнопки 
+          activeButton={this.state.activeButton}
         />
         {/* <Section
           isOn={this.state.isPlanes}
