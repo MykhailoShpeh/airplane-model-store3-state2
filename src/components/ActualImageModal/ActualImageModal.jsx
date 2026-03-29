@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import css from './ActualImageModal.module.css'
-//? Бібліотека для модальних вікон: Yet Another React Lightbox
 
+//? Бібліотека для модальних вікон: Yet Another React Lightbox
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+
+//? Додавання плагінів Yet Another React Lightbox
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 
 export class ActualImageModal extends Component {
@@ -52,6 +55,7 @@ export class ActualImageModal extends Component {
                     close={this.closeLightbox}
                     slides={slides}
                     index={index}
+                    plugins={[Zoom]}
                 />
 
             </div>
