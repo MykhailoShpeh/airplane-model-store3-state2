@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import defaultImage from "@/components/default.png"; //! Дефолтне зображення
 import css from './Planes.module.css';
-import {getManufacturingYears} from '@/utils/formatDateDuration.js'
+import { getManufacturingYears } from '@/utils/formatDateDuration.js'
+import {ActualImageModal} from '@/components/ActualImageModal/ActualImageModal.jsx'
 
 import { IoAirplaneSharp } from "react-icons/io5";
 
@@ -93,7 +94,9 @@ export function Planes({
             <h4 className={css.imageTitles}> <GiAirplaneDeparture className={css.icon} size={iconSize.lg} />Рекламна модель:</h4>
             <img src={urlPromotional} alt={nameBrief} />
             <h4 className={css.imageTitles}><CiAirportSign1 className={css.icon} size={iconSize.lg} /> Реальна модель:</h4>
-            <div
+            
+            {/* //! Блок зображень без модальни вікон */}
+            {/* <div
                 className={css.imgBox}>
                 {urlActual.map(item =>
                     <img
@@ -103,7 +106,9 @@ export function Planes({
                         className={css.img}
                     />
                 )}
-            </div>
+            </div> */}
+            {/* //? Модальні вікна для блока зображень з Yet Another React Lightbox */}
+            <ActualImageModal images={urlActual} briefName={nameBrief}/>
             <button
                 className={css.but}
                 type="button">

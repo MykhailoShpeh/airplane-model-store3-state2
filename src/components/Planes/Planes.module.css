@@ -44,20 +44,6 @@
     background-color: #9accf5;
 }
 
-.imgBox {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding: 8px;
-    border-radius: 8px;
-    background-color: gray;
-}
-
-.img {
-    max-width: calc((100% - 10px) / 2);
-    border-radius: 4px;
-}
-
 .but {
     width: 70%;
     margin: 20px auto;
