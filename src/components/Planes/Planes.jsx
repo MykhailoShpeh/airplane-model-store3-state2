@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import defaultImage from "@/components/default.png"; //! Дефолтне зображення
 import css from './Planes.module.css';
 import { getManufacturingYears } from '@/utils/formatDateDuration.js'
-import {ActualImageModal} from '@/components/ActualImageModal/ActualImageModal.jsx'
+import { ActualImageModal } from '@/components/ActualImageModal/ActualImageModal.jsx'
 
 import { IoAirplaneSharp } from "react-icons/io5";
 
@@ -58,14 +58,14 @@ export function Planes({
     function getBgCardTitle(backgroundCardTitle) {
         switch (backgroundCardTitle) {
             case 'plane':
-                return'planeTitle';
-        
+                return 'planeTitle';
+
             case 'biplane':
                 return 'biplaneTitle';
-            
+
             case 'helicopter':
                 return 'helicopterTitle';
-            
+
             default:
                 return "title";
         }
@@ -84,7 +84,7 @@ export function Planes({
             </h3>
             <img src={urlMain} alt={nameBrief} />
             <p className={css.textField}><FcTrademark className={css.icon} size={iconSize.md} /> Повна назва: <span className={css.textFieldValue}>{nameFull}</span></p>
-            <p className={css.textField}><IoAirplaneSharp className={css.icon} size={iconSize.md} color='red'/> Тип: <span className={css.textFieldValue}>{type}</span></p>
+            <p className={css.textField}><IoAirplaneSharp className={css.icon} size={iconSize.md} color='red' /> Тип: <span className={css.textFieldValue}>{type}</span></p>
             <p className={css.textField}><GiCeremonialMask className={css.icon} size={iconSize.md} /> Прізвисько: <span className={css.textFieldValue}>{nickname}</span></p>
             <p className={css.textField}><AiOutlineFlag className={css.icon} size={iconSize.md} /> Країна виробник: <span className={css.textFieldValue}>{country}</span></p>
             <p className={css.textField}><AiOutlineClockCircle className={css.icon} size={iconSize.md} /> Рік випуску: <span className={css.textFieldValue}>{year}</span></p>
@@ -94,7 +94,7 @@ export function Planes({
             <h4 className={css.imageTitles}> <GiAirplaneDeparture className={css.icon} size={iconSize.lg} />Рекламна модель:</h4>
             <img src={urlPromotional} alt={nameBrief} />
             <h4 className={css.imageTitles}><CiAirportSign1 className={css.icon} size={iconSize.lg} /> Реальна модель:</h4>
-            
+
             {/* //! Блок зображень без модальни вікон */}
             {/* <div
                 className={css.imgBox}>
@@ -108,7 +108,12 @@ export function Planes({
                 )}
             </div> */}
             {/* //? Модальні вікна для блока зображень з Yet Another React Lightbox */}
-            <ActualImageModal images={urlActual} briefName={nameBrief}/>
+            <ActualImageModal
+                images={urlActual}
+                briefName={nameBrief}
+                fullName={nameFull}
+                description={description}
+            />
             <button
                 className={css.but}
                 type="button">
