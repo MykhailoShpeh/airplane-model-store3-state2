@@ -38,6 +38,7 @@ export function Planes({
     urlMain = defaultImage, //! Дефолтне зображення
     urlPromotional,
     urlActual,
+    urlActualFull = [],
     nameBrief,
     nameFull,
     nickname = "не відомо",
@@ -47,7 +48,7 @@ export function Planes({
     country,
     type,
     price,
-    description
+    description,
 }) {
     function printlActualimages(urlActual) {
         urlActual.map
@@ -110,6 +111,7 @@ export function Planes({
             {/* //? Модальні вікна для блока зображень з Yet Another React Lightbox */}
             <ActualImageModal
                 images={urlActual}
+                imagesFull={urlActualFull}
                 briefName={nameBrief}
                 fullName={nameFull}
                 description={description}
