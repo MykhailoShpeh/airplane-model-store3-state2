@@ -15,8 +15,13 @@ export class ColorBox extends Component {
                     <p className={css.colorBoxDescription}>Останній обраний колір:<span className={css.colorBoxSelectedColor}>{"Red"}</span></p>
                     <div className={css.colorBox}>
                         {colorBoxes.map(item =>
-                            <button className={css.colorBoxButton}>Off</button>
-                    )}
+                            <button
+                                className={css.colorBoxButton}
+                                style={{ backgroundColor: item.color }}
+                            >
+                                Off
+                            </button>
+                        )}
                     </div>
                 </div>
                 {/* //! Блок обраних кольорів */}
