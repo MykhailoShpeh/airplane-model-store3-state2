@@ -32,7 +32,7 @@ export class ColorBox extends Component {
                     <h2 className={css.colorBoxTitle}>Вибір кольорів</h2>
                     <p className={css.colorBoxDescription}>
                         Останній обраний колір:
-                        &nbsp; //! пробіл
+                        &nbsp;
                         <span
                             style={{
                                 padding: "4px",
