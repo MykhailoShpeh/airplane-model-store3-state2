@@ -15,11 +15,6 @@ export class ColorBox extends Component {
 
     getActiveIndex = (index) => {
 
-        this.setState({
-            activeButtonIndex: index,
-            selectedButtonsIdx: [...this.state.selectedButtonsIdx, index]
-        })
-
         if (this.state.selectedButtonsIdx.includes(index)) {
             //! не = this.state.selectedButtonsIdx, а = [...this.state.selectedButtonsIdx], бо при 1 варіанті ми даємо посилання замість копії, це зламає роботу state
             const functionSelectedButtonsIdx = [...this.state.selectedButtonsIdx]
@@ -31,7 +26,10 @@ export class ColorBox extends Component {
             })
         }
         else {
-            return
+            this.setState({
+                activeButtonIndex: index,
+                selectedButtonsIdx: [...this.state.selectedButtonsIdx, index]
+            })
         }
 
         //? this.state.selectedButtonsIdx.push(index);
