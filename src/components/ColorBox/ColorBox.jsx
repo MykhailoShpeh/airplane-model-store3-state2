@@ -2,28 +2,54 @@ import React, { Component } from "react";
 import css from "./ColorBox.module.css";
 
 export class ColorBox extends Component {
-
+    //* 1. отримати індекс активної кнопки "activeButtonIndex"
+    //* 2. cтворити масив 'selectedButtonsIdx' для індексів обраних елементів
+    //! 2.1 додати логіку toggle - якщо елемент є у масиві ми його видаляємо, якщо його немає, тоді додаємо 
+    //! 3. створити масив 'selectedColors' обраних елементів згідно масиву індексів
+    //! 4. відмалювати розмітку масиву обраних елементів
     state = {
-        activeButtonIndex: 0 //! якщо null не працює
+        activeButtonIndex: null, 
+        selectedButtonsIdx: [],
+        selectedColors: []
     }
 
     getActiveIndex = (index) => {
+
         this.setState({
-            activeButtonIndex: index
-        });
-        //! console.log("this.state.activeButtonIndex: ", this.state.activeButtonIndex); //! ❌
+            activeButtonIndex: index,
+            selectedButtonsIdx: [...this.state.selectedButtonsIdx, index]
+        })
+
+        if (this.state.selectedButtonsIdx.includes(index)) {
+            //! не = this.state.selectedButtonsIdx, а = [...this.state.selectedButtonsIdx], бо при 1 варіанті ми даємо посилання замість копії, це зламає роботу state
+            const functionSelectedButtonsIdx = [...this.state.selectedButtonsIdx]
+
+            //! index - 1 замість newSelectedButtonsIdx.indexOf(index) не працює!
+            functionSelectedButtonsIdx.splice(functionSelectedButtonsIdx.indexOf(index), 1);
+            this.setState({
+                selectedButtonsIdx: functionSelectedButtonsIdx
+            })
+        }
+        else {
+            return
+        }
+
+        //? this.state.selectedButtonsIdx.push(index);
+
+        //  console.log("this.state.activeButtonIndex: ", this.state.activeButtonIndex); //! ❌
     }
+
 
     render() {
         const { colorBoxes } = this.props;
-        console.log("colorBoxes: ", colorBoxes);
-        const { activeButtonIndex } = this.state;
-        console.log("activeButtonIndex: ", activeButtonIndex);
-
+        const { activeButtonIndex, selectedButtonsIdx, selectedColors } = this.state;
         const active = colorBoxes[activeButtonIndex]; //! знаходимо потрібний об'єкт
-        console.log("active: ", active.label);
 
-        const array = []
+        console.log("🔘Активна кнопка:", activeButtonIndex);
+        console.log("ℹ️Індекси обраних кнопок:", selectedButtonsIdx);
+        console.log("Ⓜ️Масив обраних елементів(кольорів):", selectedColors);
+        // console.log("🆔Кількість обраних кольорів:", NumberOfColors);
+        console.log("----------------------------------------------");
 
         return (
             <>
@@ -36,18 +62,19 @@ export class ColorBox extends Component {
                         <span
                             style={{
                                 padding: "4px",
-                                backgroundColor: active.color,
+                                // backgroundColor: active.color,
                                 borderRadius: '4px',
                                 fontWeight: "700"
                             }}
                             className={css.colorBoxSelectedColor}
                         >
-                            {active.label}
+                            {/* {active.label} */}
                         </span>
                     </p>
                     <div className={css.colorBox}>
                         {colorBoxes.map((item, index) =>
                             <button
+                                key={item.color}
                                 className={css.colorBoxButton}
                                 style={{ backgroundColor: item.color }}
                                 onClick={() => { this.getActiveIndex(index) }} //* ✅
