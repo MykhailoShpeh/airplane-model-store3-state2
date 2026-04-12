@@ -4,18 +4,20 @@ import css from "./ColorBox.module.css";
 export class ColorBox extends Component {
     //* 1. отримати індекс активної кнопки "activeButtonIndex"
     //* 2. cтворити масив 'selectedButtonsIdx' для індексів обраних елементів
-    //! 2.1 додати логіку toggle - якщо елемент є у масиві ми його видаляємо, якщо його немає, тоді додаємо 
-    //! 3. створити масив 'selectedColors' обраних елементів згідно масиву індексів
+    //* 2.1 додати логіку toggle - якщо елемент є у масиві ми його видаляємо, якщо його немає, тоді додаємо 
+    //? 3. створити масив 'selectedColors' обраних елементів згідно масиву індексів
     //! 4. відмалювати розмітку масиву обраних елементів
     state = {
-        activeButtonIndex: null, 
-        selectedButtonsIdx: [],
-        selectedColors: []
+        activeButtonIndex: null, //! індекс обраного елемента
+        selectedButtonsIdx: [], //! масив індексів обраних елементів
+        selectedColors: [] //! масив обраних елементів згідно масиву індексів
     }
 
     getActiveIndex = (index) => {
 
         if (this.state.selectedButtonsIdx.includes(index)) {
+            console.log("Такий індекс вже є,тоді ВИДАЛЯЄМО його!❌");
+
             //! не = this.state.selectedButtonsIdx, а = [...this.state.selectedButtonsIdx], бо при 1 варіанті ми даємо посилання замість копії, це зламає роботу state
             const functionSelectedButtonsIdx = [...this.state.selectedButtonsIdx]
 
@@ -26,6 +28,8 @@ export class ColorBox extends Component {
             })
         }
         else {
+            console.log("Такого індекса ще немає,тоді ДОДАЄМО його!✅");
+
             this.setState({
                 activeButtonIndex: index,
                 selectedButtonsIdx: [...this.state.selectedButtonsIdx, index]
