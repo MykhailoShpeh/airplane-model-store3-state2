@@ -33,11 +33,10 @@ export class ColorBox extends Component {
             this.setState({
                 activeButtonIndex: index,
                 selectedButtonsIdx: [...this.state.selectedButtonsIdx, index]
-            });
-
-            this.updateSelectedColorElements()
-            
+            });  
         }
+
+        this.updateSelectedColorElements()
 
         //? this.state.selectedButtonsIdx.push(index);
 
