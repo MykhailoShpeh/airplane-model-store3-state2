@@ -33,12 +33,25 @@ export class ColorBox extends Component {
             this.setState({
                 activeButtonIndex: index,
                 selectedButtonsIdx: [...this.state.selectedButtonsIdx, index]
-            })
+            });
+
+            this.updateSelectedColorElements()
+            
         }
 
         //? this.state.selectedButtonsIdx.push(index);
 
         //  console.log("this.state.activeButtonIndex: ", this.state.activeButtonIndex); //! ❌
+    }
+
+    updateSelectedColorElements = () => {
+        // const planetsInLowerCase = planets.map(planet => planet.toLowerCase());
+        // this.setState(prevState => {
+        //     return {
+        //         value: prevState.value + 1,
+        //     };
+        // });
+            this.setState(prevState => ({ selectedColors: prevState.selectedButtonsIdx.flatMap((item) => this.props.colorBoxes.filter((el, idx) => idx === item)) }))
     }
 
 
