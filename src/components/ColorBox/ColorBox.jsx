@@ -5,8 +5,8 @@ export class ColorBox extends Component {
     //* 1. отримати індекс активної кнопки "activeButtonIndex"
     //* 2. cтворити масив 'selectedButtonsIdx' для індексів обраних елементів
     //* 2.1 додати логіку toggle - якщо елемент є у масиві ми його видаляємо, якщо його немає, тоді додаємо 
-    //? 3. створити масив 'selectedColors' обраних елементів згідно масиву індексів
-    //! 4. відмалювати розмітку масиву обраних елементів
+    //* 3. створити масив 'selectedColors' обраних елементів згідно масиву індексів
+    //? 4. відмалювати розмітку масиву обраних елементів
     state = {
         activeButtonIndex: null, //! індекс обраного елемента
         selectedButtonsIdx: [], //! масив індексів обраних елементів
@@ -57,7 +57,6 @@ export class ColorBox extends Component {
     render() {
         const { colorBoxes } = this.props;
         const { activeButtonIndex, selectedButtonsIdx, selectedColors } = this.state;
-        const active = colorBoxes[activeButtonIndex]; //! знаходимо потрібний об'єкт
 
         console.log("🔘Активна кнопка:", activeButtonIndex);
         console.log("ℹ️Індекси обраних кнопок:", selectedButtonsIdx);
@@ -65,24 +64,42 @@ export class ColorBox extends Component {
         // console.log("🆔Кількість обраних кольорів:", NumberOfColors);
         console.log("----------------------------------------------");
 
+        //! якщо значення обраного елемента null, то відмальовуємо пустий рядок, 
+        //! а якщо число то відмалювати потрібну назву та колір
+
+        //! activeButton === "helicoptersButton"
+        //! ? `${css.buttonHelicopterFiltration} ${css.active}`
+        //! : css.buttonHelicopterFiltration
+
+        //! при завантаженні застосунку рядок з останнім доданим кольором повинен повернути пустий рядок,
+        //! а при обраному елементі його значення змінитися на значення кольору обраного елементу
+
         return (
             <>
                 {/* //! Блок вибору кольорів */}
                 <div className={css.colorBoxContainer}>
                     <h2 className={css.colorBoxTitle}>Вибір кольорів</h2>
                     <p className={css.colorBoxDescription}>
-                        Останній обраний колір:
+                        Останній доданий колір:
                         &nbsp;
                         <span
                             style={{
                                 padding: "4px",
-                                // backgroundColor: active.color,
+                                backgroundColor: 
+                                    activeButtonIndex === null
+                                    ? "transparent"
+                                    : colorBoxes[activeButtonIndex].color
+                            ,
                                 borderRadius: '4px',
                                 fontWeight: "700"
                             }}
                             className={css.colorBoxSelectedColor}
                         >
-                            {/* {active.label} */}
+                            {
+                                activeButtonIndex === null
+                                    ? ''
+                                    : colorBoxes[activeButtonIndex].label
+                                }
                         </span>
                     </p>
                     <div className={css.colorBox}>

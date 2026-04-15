@@ -35,7 +35,11 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, activeButto
 
             <button
                 // className={css.buttonHelicopterFiltration}
-                className={activeButton === "helicoptersButton" ? `${css.buttonHelicopterFiltration} ${css.active}` : css.buttonHelicopterFiltration}
+                className={
+                    activeButton === "helicoptersButton"
+                        ? `${css.buttonHelicopterFiltration} ${css.active}`
+                        : css.buttonHelicopterFiltration
+                }
                 type="button"
                 onClick={onHelicopters}
             >
