@@ -132,7 +132,18 @@ export class ColorBox extends Component {
                 </div>
                 {/* //! Блок обраних кольорів */}
                 <div className={css.selectedColorsContainer}>
-                    <h2>Обрані кольори: </h2>
+                    <h2 className={css.colorBoxTitle}>Обрані кольори: </h2>
+                    <p className={css.colorBoxDescription}>Кількість обраних кольорів: {selectedColors.length} </p>
+                    <div className={css.selectedColorBox}>
+                        {selectedColors.map((item) =>
+                            <div
+                                key={item.label}
+                                className={css.selectedColor}
+                                style={{ backgroundColor: item.color }}>
+                                {item.label}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </>
         )

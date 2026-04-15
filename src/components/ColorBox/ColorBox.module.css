@@ -31,3 +31,27 @@
     border-radius: 4%;
     outline: 2px solid black;
 }
+
+.selectedColorsContainer {
+width: 860px;
+margin: 0 auto;
+}
+
+.colorBoxTitle {
+
+}
+
+.colorBoxDescription {}
+
+.selectedColorBox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.selectedColor {
+    height: 30px;
+    font-size: 1.2rem;
+    border-radius: 2px;
+    margin-bottom: 4px;
+}
