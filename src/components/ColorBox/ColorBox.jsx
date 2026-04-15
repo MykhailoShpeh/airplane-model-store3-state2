@@ -32,7 +32,7 @@ export class ColorBox extends Component {
 
             this.setState({
                 activeButtonIndex: index,
-                selectedButtonsIdx: [...this.state.selectedButtonsIdx, index]
+                selectedButtonsIdx: [...this.state.selectedButtonsIdx, index].sort((a, b) => a - b)
             });
         }
 
