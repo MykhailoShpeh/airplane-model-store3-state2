@@ -33,7 +33,7 @@ export class ColorBox extends Component {
             this.setState({
                 activeButtonIndex: index,
                 selectedButtonsIdx: [...this.state.selectedButtonsIdx, index]
-            });  
+            });
         }
 
         this.updateSelectedColorElements()
@@ -50,7 +50,7 @@ export class ColorBox extends Component {
         //         value: prevState.value + 1,
         //     };
         // });
-            this.setState(prevState => ({ selectedColors: prevState.selectedButtonsIdx.flatMap((item) => this.props.colorBoxes.filter((el, idx) => idx === item)) }))
+        this.setState(prevState => ({ selectedColors: prevState.selectedButtonsIdx.flatMap((item) => this.props.colorBoxes.filter((el, idx) => idx === item)) }))
     }
 
 
@@ -74,6 +74,16 @@ export class ColorBox extends Component {
         //! при завантаженні застосунку рядок з останнім доданим кольором повинен повернути пустий рядок,
         //! а при обраному елементі його значення змінитися на значення кольору обраного елементу
 
+        //todo при натиску на елемент його вміст має змінитися на "✅On",
+        //todo при повторному натиску змінитися в початковий вміст "🆓Off"
+
+        //todo нам потрібен масив індексів активних кнопок [selectedButtonsIdx], index
+
+        //todo треба порівняти index з [selectedButtonsIdx],
+        //todo  якщо значення індекса є в масиві,
+        //todo  то ми міняємо вміст елемента на "🆓Off",
+        //todo  якщо немає,  на "✅On"
+
         return (
             <>
                 {/* //! Блок вибору кольорів */}
@@ -85,11 +95,11 @@ export class ColorBox extends Component {
                         <span
                             style={{
                                 padding: "4px",
-                                backgroundColor: 
+                                backgroundColor:
                                     activeButtonIndex === null
-                                    ? "transparent"
-                                    : colorBoxes[activeButtonIndex].color
-                            ,
+                                        ? "transparent"
+                                        : colorBoxes[activeButtonIndex].color
+                                ,
                                 borderRadius: '4px',
                                 fontWeight: "700"
                             }}
@@ -99,7 +109,7 @@ export class ColorBox extends Component {
                                 activeButtonIndex === null
                                     ? ''
                                     : colorBoxes[activeButtonIndex].label
-                                }
+                            }
                         </span>
                     </p>
                     <div className={css.colorBox}>
@@ -112,7 +122,10 @@ export class ColorBox extends Component {
                             // onClick={this.getActiveIndex(index)} ❌
                             // onClick={this.getActiveIndex} ❌
                             >
-                                Off
+                                {selectedButtonsIdx.includes(index)
+                                    ? "✅On"
+                                    : "🆓Off"
+                                }
                             </button>
                         )}
                     </div>
