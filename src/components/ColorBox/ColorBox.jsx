@@ -56,12 +56,25 @@ export class ColorBox extends Component {
 
     render() {
         const { colorBoxes } = this.props;
-        const { activeButtonIndex, selectedButtonsIdx, selectedColors } = this.state;
+        const {
+            activeButtonIndex,
+            selectedButtonsIdx,
+            // selectedColors
+        } = this.state;
+
+        //! Блок обчислювальних елементів
+
+        //! Формуємо масив обраних елементів(кольорів) не зберігаючи його в state:
+        const selectedColors = selectedButtonsIdx.flatMap((item) => colorBoxes.filter((el, idx) => idx === item))
+
+        //! Рахуємо кількість обраних кольорів:
+        const NumberOfColors = selectedColors.length;
 
         console.log("🔘Активна кнопка:", activeButtonIndex);
         console.log("ℹ️Індекси обраних кнопок:", selectedButtonsIdx);
         console.log("Ⓜ️Масив обраних елементів(кольорів):", selectedColors);
-        // console.log("🆔Кількість обраних кольорів:", NumberOfColors);
+        console.log("Вхідний масив з данними: ", colorBoxes);
+        console.log("🆔Кількість обраних кольорів:", NumberOfColors);
         console.log("----------------------------------------------");
 
         //! якщо значення обраного елемента null, то відмальовуємо пустий рядок, 
@@ -133,7 +146,7 @@ export class ColorBox extends Component {
                 {/* //! Блок обраних кольорів */}
                 <div className={css.selectedColorsContainer}>
                     <h2 className={css.colorBoxTitle}>Обрані кольори: </h2>
-                    <p className={css.colorBoxDescription}>Кількість обраних кольорів: {selectedColors.length} </p>
+                    <p className={css.colorBoxDescription}>Кількість обраних кольорів: {NumberOfColors} </p>
                     <div className={css.selectedColorBox}>
                         {selectedColors.map((item) =>
                             <div
