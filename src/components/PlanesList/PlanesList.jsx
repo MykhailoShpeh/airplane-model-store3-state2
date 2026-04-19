@@ -23,8 +23,8 @@ export function PlanesList({ items }) {
                     <Planes
                         urlMain={item.url.main}
                         urlPromotional={item.url.promotional}
-                        urlActual={item.url.actual}
-                        urlActualFull={item.url.actualFull}
+                        urlActual={item.model.actualImages}
+                        urlActualFull={item.model.actualFullImages}
                         nameBrief={item.name.brief}
                         nameFull={item.name.full}
                         nickname={item.name.nickname}
