@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import defaultImage from "@/components/default.png"; //! Дефолтне зображення
+import defaultImage from "@/components/Planes/default.jpg"; //! Дефолтне зображення
+import template from "@/components/Planes/template-out-of-stock.jpg";
 import css from './Planes.module.css';
 import { getManufacturingYears } from '@/utils/formatDateDuration.js'
 import { ActualImageModal } from '@/components/ActualImageModal/ActualImageModal.jsx'
