@@ -9,10 +9,36 @@ export class ColorBox extends Component {
     //? 4. відмалювати розмітку масиву обраних елементів
     state = {
         // activeButtonIndex: null, //! індекс обраного елемента
-        selectedButtonsIdx: [], //! масив індексів обраних елементів
+        // selectedButtonsIdx: [], //! масив індексів обраних елементів
+        //! 1.localStorage - Ініціалізація state з localStorage
+        selectedButtonsIdx: JSON.parse(localStorage.getItem("selectedIdx")) || [], //! масив індексів обраних елементі
         // selectedColors: [] //! масив обраних елементів згідно масиву індексів
     }
 
+    //! 2.localStorage - Створення запису в localStorage під час першого запуску якщо його немає
+    componentDidMount() {
+        const saved = localStorage.getItem("selectedIdx");
+        if (!saved) {
+            localStorage.setItem("selectedIdx", JSON.stringify([]));
+        }
+    };
+
+    //! 3.localStorage - Оновлення(синхронізація) localStorage при кожній зміні selectedButtonsIdx
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.selectedButtonsIdx !== this.state.selectedButtonsIdx) {
+            localStorage.setItem(
+                "selectedIdx",
+                JSON.stringify(this.state.selectedButtonsIdx)
+            );
+        }
+    };
+
+
+    //! Алгоритм роботи з localStorage
+    //1. Ініціалізація //* Перевірка чи є щось у localStorage, якщо є ми використовуємо ці властивості, а якщо немає то записуємо у localStorage пустий масив
+    //2. Робота з localStorage //* При кожній зміні state оновлювати дані в localStorage, та рендерети дані з localStorage
+
+    //! Формуємо масив індексів обраних елементів
     getActiveIndex = (index) => {
 
         if (this.state.selectedButtonsIdx.includes(index)) {
@@ -99,6 +125,8 @@ export class ColorBox extends Component {
         //todo  якщо значення індекса є в масиві,
         //todo  то ми міняємо вміст елемента на "🆓Off",
         //todo  якщо немає,  на "✅On"
+
+
 
         return (
             <>
