@@ -38,7 +38,7 @@ export function Planes({
     backgroundCardTitle,
     urlMain = defaultImage, //! Дефолтне зображення
     urlPromotional,
-    urlActual,
+    urlActual = [template],
     urlActualFull = [],
     nameBrief,
     nameFull,
