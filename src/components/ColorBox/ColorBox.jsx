@@ -8,9 +8,9 @@ export class ColorBox extends Component {
     //* 3. створити масив 'selectedColors' обраних елементів згідно масиву індексів
     //? 4. відмалювати розмітку масиву обраних елементів
     state = {
-        activeButtonIndex: null, //! індекс обраного елемента
+        // activeButtonIndex: null, //! індекс обраного елемента
         selectedButtonsIdx: [], //! масив індексів обраних елементів
-        selectedColors: [] //! масив обраних елементів згідно масиву індексів
+        // selectedColors: [] //! масив обраних елементів згідно масиву індексів
     }
 
     getActiveIndex = (index) => {
@@ -31,33 +31,33 @@ export class ColorBox extends Component {
             console.log("Такого індекса ще немає,тоді ДОДАЄМО його!✅");
 
             this.setState({
-                activeButtonIndex: index,
+                // activeButtonIndex: index,
                 selectedButtonsIdx: [...this.state.selectedButtonsIdx, index].sort((a, b) => a - b)
             });
         }
 
-        this.updateSelectedColorElements()
+        // this.updateSelectedColorElements()
 
         //? this.state.selectedButtonsIdx.push(index);
 
         //  console.log("this.state.activeButtonIndex: ", this.state.activeButtonIndex); //! ❌
     }
 
-    updateSelectedColorElements = () => {
-        // const planetsInLowerCase = planets.map(planet => planet.toLowerCase());
-        // this.setState(prevState => {
-        //     return {
-        //         value: prevState.value + 1,
-        //     };
-        // });
-        this.setState(prevState => ({ selectedColors: prevState.selectedButtonsIdx.flatMap((item) => this.props.colorBoxes.filter((el, idx) => idx === item)) }))
-    }
+    // updateSelectedColorElements = () => {
+    //     // const planetsInLowerCase = planets.map(planet => planet.toLowerCase());
+    //     // this.setState(prevState => {
+    //     //     return {
+    //     //         value: prevState.value + 1,
+    //     //     };
+    //     // });
+    //     this.setState(prevState => ({ selectedColors: prevState.selectedButtonsIdx.flatMap((item) => this.props.colorBoxes.filter((el, idx) => idx === item)) }))
+    // }
 
 
     render() {
         const { colorBoxes } = this.props;
         const {
-            activeButtonIndex,
+            // activeButtonIndex,
             selectedButtonsIdx,
             // selectedColors
         } = this.state;
@@ -70,7 +70,10 @@ export class ColorBox extends Component {
         //! Рахуємо кількість обраних кольорів:
         const NumberOfColors = selectedColors.length;
 
-        console.log("🔘Активна кнопка:", activeButtonIndex);
+        //! Тут його створити неможливо
+        // const activeButtonIndex =
+
+        // console.log("🔘Активна кнопка:", activeButtonIndex);
         console.log("ℹ️Індекси обраних кнопок:", selectedButtonsIdx);
         console.log("Ⓜ️Масив обраних елементів(кольорів):", selectedColors);
         console.log("Вхідний масив з данними: ", colorBoxes);
@@ -102,7 +105,7 @@ export class ColorBox extends Component {
                 {/* //! Блок вибору кольорів */}
                 <div className={css.colorBoxContainer}>
                     <h2 className={css.colorBoxTitle}>Вибір кольорів</h2>
-                    <p className={css.colorBoxDescription}>
+                    {/* <p className={css.colorBoxDescription}>
                         Останній доданий колір:
                         &nbsp;
                         <span
@@ -124,7 +127,7 @@ export class ColorBox extends Component {
                                     : colorBoxes[activeButtonIndex].label
                             }
                         </span>
-                    </p>
+                    </p> */}
                     <div className={css.colorBox}>
                         {colorBoxes.map((item, index) =>
                             <button
