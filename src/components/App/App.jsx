@@ -84,29 +84,46 @@ export class App extends Component {
       aircraftArray: helicoptersArray,
       activeButton: "helicoptersButton"
     });
-  };
 
-  //!Фільтрація var.2 
-  // allFiltration = () => {
-  //   console.log("new All")
-  //   return "Магазин моделей літальних апаратів"
-  // };
+  }
 
-  // planeFiltration = () => {
-  //   console.log("new Planes")
-  //   return "Магазин моделей літаків"
-  // };
+    cartFiltration = () => {
+      console.log("Корзина")
 
-  // helicopterFiltration = () => {
-  //   console.log("new Helicopters")
-  //   return "Магазин моделей вертольотів"
-  // };
+      // const cartArray = aircrafts.filter(item => item.aircraftType === "helicopter")
+      // console.log("cartArray: ", cartArray);
+      this.setState({
+        // isAll: false,
+        // isPlanes: false,
+        // isHelicopters: true,
+        bgColor: 'lightblue',
+        aircraftTitle: "Кошик",
+        // aircraftArray: cartArray,
+        activeButton: "cartButton"
+      });
+    }
 
-  render() {
-    return (
-      <>
-        {/*//!  Filter */}
-        {/* <div className={css.filterBox}>
+    //!Фільтрація var.2 
+    // allFiltration = () => {
+    //   console.log("new All")
+    //   return "Магазин моделей літальних апаратів"
+    // };
+
+    // planeFiltration = () => {
+    //   console.log("new Planes")
+    //   return "Магазин моделей літаків"
+    // };
+
+    // helicopterFiltration = () => {
+    //   console.log("new Helicopters")
+    //   return "Магазин моделей вертольотів"
+    // };
+
+    render() {
+      return (
+        <>
+          {/*//!  Filter */}
+          {/* <div className={css.filterBox}>
                 <button
                     className={css.buttonAllFiltration}
                     type="button"
@@ -132,15 +149,16 @@ export class App extends Component {
                 </button>
         
                 </div> */}
-        <Filter
-          onAll={this.allFiltration}
-          onPlanes={this.planeFiltration}
-          onBiplanes={this.biplanesFiltration}
-          onHelicopters={this.helicopterFiltration}
-          //! Візуалізація активної кнопки 
-          activeButton={this.state.activeButton}
-        />
-        {/* <Section
+          <Filter
+            onAll={this.allFiltration}
+            onPlanes={this.planeFiltration}
+            onBiplanes={this.biplanesFiltration}
+            onHelicopters={this.helicopterFiltration}
+            onCart={this.cartFiltration}
+            //! Візуалізація активної кнопки 
+            activeButton={this.state.activeButton}
+          />
+          {/* <Section
           isOn={this.state.isPlanes}
           title="Магазин моделей літаків"
           bgColor={this.state.bgColor}
@@ -154,20 +172,20 @@ export class App extends Component {
         >
           <PlanesList items={helicopters} />
         </Section > */}
-        <Section
-          // isOn={this.state.isAll}
+          <Section
+            // isOn={this.state.isAll}
 
-          title={this.state.aircraftTitle}
-          bgColor={this.state.bgColor}
-        >
-          <PlanesList items={this.state.aircraftArray} />
-        </Section >
-        {/* <Section
+            title={this.state.aircraftTitle}
+            bgColor={this.state.bgColor}
+          >
+            <PlanesList items={this.state.aircraftArray} />
+          </Section >
+          {/* <Section
           // isOn={this.state.isPlanes}>
           title="Магазин моделей літаків"
           <PlanesList items={aircrafts} />
         </Section > */}
-      </>
-    );
+        </>
+      )
+    }
   }
-};
