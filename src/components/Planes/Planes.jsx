@@ -118,8 +118,8 @@ export function Planes({
                 description={description}
             />
             <button
-                disabled={urlActual.length === 1}
-                className={urlActual.length === 1 ? `${css.but} ${css.disabled}` : css.but}
+                disabled={urlActual[0] === template}
+                className={urlActual[0] === template ? `${css.but} ${css.disabled}` : css.but}
                 type="button">
                 Додати до кошику
             </button>

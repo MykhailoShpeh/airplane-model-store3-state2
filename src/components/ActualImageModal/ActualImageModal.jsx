@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import css from './ActualImageModal.module.css'
+import template from "@/components/Planes/template-out-of-stock.jpg";
 
 //? Бібліотека для модальних вікон: Yet Another React Lightbox
 import Lightbox from "yet-another-react-lightbox";
@@ -71,9 +72,9 @@ export class ActualImageModal extends Component {
                         key={i} //! поки що не унікальний
                         src={item}
                         alt={briefName}
-                        className={images.length === 1 ? `${css.img} ${css.outOfStock}` : css.img}
+                        className={images[0] === template ? `${css.img} ${css.outOfStock}` : css.img}
                         // onClick={() => this.openLightbox(i)}
-                        onClick={images.length === 1 ? null: () => this.openLightbox(i) }
+                        onClick={images[0] === template ? null: () => this.openLightbox(i) }
                     />
                 )}
                 {/*//! Lightbox */}
