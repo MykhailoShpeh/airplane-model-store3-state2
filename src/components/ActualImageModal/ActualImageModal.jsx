@@ -71,9 +71,9 @@ export class ActualImageModal extends Component {
                         key={i} //! поки що не унікальний
                         src={item}
                         alt={briefName}
-                        className={css.img}
-                        onClick={() => this.openLightbox(i)}
-
+                        className={images.length === 1 ? `${css.img} ${css.outOfStock}` : css.img}
+                        // onClick={() => this.openLightbox(i)}
+                        onClick={images.length === 1 ? null: () => this.openLightbox(i) }
                     />
                 )}
                 {/*//! Lightbox */}

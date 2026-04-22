@@ -7,6 +7,8 @@
     background-color: gray;
 }
 
+
+
 .img {
     max-width: calc((100% - 10px) / 2);
     border-radius: 4px;
@@ -16,8 +18,18 @@
         /*! + */
 }
 
+.outOfStock {
+max-width: 100%;
+cursor: auto;
+}
+
 /*! + */
 .img:hover {
     transform: scale(1.03);
     outline: 3px solid #ff9111;
+}
+
+.outOfStock:hover {
+    transform: none;
+    outline: none;
 }
