@@ -57,6 +57,8 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, onCart,  ac
                 onClick={onCart}
             >
                 Кошик
+               &nbsp;
+                <span className={css.cartSpan}>{0}</span>
             </button>
 
         </div>

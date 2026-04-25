@@ -55,7 +55,17 @@
 
 .buttonCartFiltration {
     composes: button;
-    border: 6px #cc4732 solid;
+    border: 6px #ff5119 solid;
+}
+
+.cartSpan {
+    width: 30px;
+    height: 30px;
+    color: yellow;
+    display: inline-block;
+    text-align: center;
+    outline: 2px solid #ff5119;
+    border-radius: 50%;
 }
 
 /*//! Візуалізація активної кнопки */
