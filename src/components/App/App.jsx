@@ -22,7 +22,9 @@ export class App extends Component {
     buttonBackground: "",
     //! Візуалізація активної кнопки 
     activeButton: "allButton",
-    activeButtonIndex: null
+    activeButtonIndex: null,
+    indicesSelectedModels: [], //! масив індексів обраних моделей
+
   }
 
   
@@ -108,8 +110,30 @@ export class App extends Component {
     console.log("id: ", id)
     
     this.setState({
-      activeButtonIndex: id
+      activeButtonIndex: id,
     })
+
+    if (this.state.indicesSelectedModels.includes(id)) {
+      console.log("Такий індекс вже є,тоді ВИДАЛЯЄМО його!❌");
+
+      //! не = this.state.indicesSelectedModels, а = [...this.state.indicesSelectedModels], бо при 1 варіанті ми даємо посилання замість копії, це зламає роботу state
+      const idArray = [...this.state.indicesSelectedModels]
+
+      //! index - 1 замість newindicesSelectedModels.indexOf(index) не працює!
+      idArray.splice(idArray.indexOf(id), 1);
+      this.setState({
+        indicesSelectedModels: idArray
+      })
+    }
+    else {
+      console.log("Такого індекса ще немає,тоді ДОДАЄМО його!✅");
+
+      this.setState({
+        // activeButtonIndex: index,
+        indicesSelectedModels: [...this.state.indicesSelectedModels, id].sort((a, b) => a - b)
+      });
+    }
+
     }
 
     //!Фільтрація var.2 
@@ -131,10 +155,12 @@ export class App extends Component {
   render() {
 
     const {
-      activeButtonIndex
+      activeButtonIndex,
+      indicesSelectedModels
     } = this.state;
       
-    console.log("activeButtonIndex: ", activeButtonIndex)
+    console.log("activeButtonIndex: ", activeButtonIndex);
+    console.log("indicesSelectedModels: ", indicesSelectedModels);
 
       return (
         <>
