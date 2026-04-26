@@ -21,7 +21,8 @@ export class App extends Component {
     aircraftArray: aircrafts,
     buttonBackground: "",
     //! Візуалізація активної кнопки 
-    activeButton: "allButton"
+    activeButton: "allButton",
+    activeButtonIndex: null
   }
 
   
@@ -102,6 +103,14 @@ export class App extends Component {
         activeButton: "cartButton"
       });
     }
+  
+  getActiveId = (id) => {
+    console.log("id: ", id)
+    
+    this.setState({
+      activeButtonIndex: id
+    })
+    }
 
     //!Фільтрація var.2 
     // allFiltration = () => {
@@ -119,7 +128,14 @@ export class App extends Component {
     //   return "Магазин моделей вертольотів"
     // };
 
-    render() {
+  render() {
+
+    const {
+      activeButtonIndex
+    } = this.state;
+      
+    console.log("activeButtonIndex: ", activeButtonIndex)
+
       return (
         <>
           {/*//!  Filter */}
@@ -178,7 +194,7 @@ export class App extends Component {
             title={this.state.aircraftTitle}
             bgColor={this.state.bgColor}
           >
-            <PlanesList items={this.state.aircraftArray} />
+            <PlanesList items={this.state.aircraftArray} onActiveId={this.getActiveId} />
           </Section >
           {/* <Section
           // isOn={this.state.isPlanes}>

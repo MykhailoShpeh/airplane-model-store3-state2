@@ -1,3 +1,4 @@
+// import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import defaultImage from "@/components/Planes/default.jpg"; //! Дефолтне зображення
 import template from "@/components/Planes/template-out-of-stock.jpg";
@@ -35,6 +36,7 @@ import { iconSize, iconColor } from '@/constants'
 // console.log("iconColor: ", iconColor);
 
 export function Planes({
+    id,
     backgroundCardTitle,
     urlMain = defaultImage, //! Дефолтне зображення
     urlPromotional,
@@ -50,12 +52,13 @@ export function Planes({
     type,
     price,
     description,
+    onActiveId
 }) {
     function printlActualimages(urlActual) {
         urlActual.map
     }
 
-    console.log("backgroundCardTitle: ", backgroundCardTitle);
+    // console.log("backgroundCardTitle: ", backgroundCardTitle);
 
     function getBgCardTitle(backgroundCardTitle) {
         switch (backgroundCardTitle) {
@@ -120,7 +123,10 @@ export function Planes({
             <button
                 disabled={urlActual[0] === template}
                 className={urlActual[0] === template ? `${css.but} ${css.disabled}` : css.but}
-                type="button">
+                type="button"
+                // onClick={() => { console.log("Мене додали до кошику: ", id )}}
+                onClick={() => { onActiveId(id) }}
+            >
                 Додати до кошику
             </button>
         </>

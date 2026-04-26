@@ -39,7 +39,7 @@ export class ActualImageModal extends Component {
     };
 
     render() {
-        console.log("this.props: ", this.props)
+        // console.log("this.props: ", this.props)
         const { images, imagesFull, briefName, fullName, description } = this.props
         const { open, index } = this.state;
 
@@ -63,7 +63,7 @@ export class ActualImageModal extends Component {
             // ],
         }));
 
-        console.log("images: ", images)
+        // console.log("images: ", images)
         return (
             <div
                 className={css.imgBox}>

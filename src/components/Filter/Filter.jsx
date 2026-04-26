@@ -2,7 +2,7 @@ import css from './Filter.module.css';
 
 
 export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, onCart,  activeButton }) {
-    console.log("activeButton", activeButton);
+    // console.log("activeButton", activeButton);
 
     return (
         <div className={css.filterBox}>
