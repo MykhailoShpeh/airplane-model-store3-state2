@@ -24,6 +24,7 @@ export class App extends Component {
     activeButton: "allButton",
     activeButtonIndex: null,
     indicesSelectedModels: [], //! масив індексів обраних моделей
+    selectedModels: [] //! масив обраних моделей
 
   }
 
@@ -93,7 +94,6 @@ export class App extends Component {
     cartFiltration = () => {
       console.log("Корзина")
 
-      // const cartArray = aircrafts.filter(item => item.aircraftType === "helicopter")
       // console.log("cartArray: ", cartArray);
       this.setState({
         // isAll: false,
@@ -101,8 +101,9 @@ export class App extends Component {
         // isHelicopters: true,
         bgColor: 'lightblue',
         aircraftTitle: "Кошик",
-        // aircraftArray: cartArray,
-        activeButton: "cartButton"
+        aircraftArray: this.state.selectedModels,
+        activeButton: "cartButton",
+
       });
     }
   
@@ -131,10 +132,24 @@ export class App extends Component {
       this.setState({
         // activeButtonIndex: index,
         indicesSelectedModels: [...this.state.indicesSelectedModels, id].sort((a, b) => a - b)
+
       });
     }
 
-    }
+    this.updateSelectedModels()
+  }
+
+  //! Формуємо(оновлюємо) масив обраних моделей [selectedModels]
+  
+  updateSelectedModels = () => {
+    console.log("Функція updateSelectedModels")
+
+    this.setState(
+    prevState => 
+    ({
+      selectedModels: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id ))
+    }))
+  }
 
     //!Фільтрація var.2 
     // allFiltration = () => {
@@ -156,11 +171,14 @@ export class App extends Component {
 
     const {
       activeButtonIndex,
-      indicesSelectedModels
+      indicesSelectedModels,
+      selectedModels
     } = this.state;
       
     console.log("activeButtonIndex: ", activeButtonIndex);
     console.log("indicesSelectedModels: ", indicesSelectedModels);
+    console.log('selectedModels: ', selectedModels);
+    
 
       return (
         <>
@@ -199,6 +217,7 @@ export class App extends Component {
             onCart={this.cartFiltration}
             //! Візуалізація активної кнопки 
             activeButton={this.state.activeButton}
+            selectedLength={this.state.indicesSelectedModels.length}
           />
           {/* <Section
           isOn={this.state.isPlanes}
@@ -220,7 +239,11 @@ export class App extends Component {
             title={this.state.aircraftTitle}
             bgColor={this.state.bgColor}
           >
-            <PlanesList items={this.state.aircraftArray} onActiveId={this.getActiveId} />
+            <PlanesList
+              items={this.state.aircraftArray}
+              onActiveId={this.getActiveId}
+              indicesSelectedModels={this.state.indicesSelectedModels}
+            />
           </Section >
           {/* <Section
           // isOn={this.state.isPlanes}>

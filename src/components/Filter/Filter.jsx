@@ -1,7 +1,7 @@
 import css from './Filter.module.css';
 
 
-export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, onCart,  activeButton }) {
+export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, onCart, activeButton, selectedLength }) {
     // console.log("activeButton", activeButton);
 
     return (
@@ -58,7 +58,7 @@ export function Filter({ onAll, onPlanes, onBiplanes, onHelicopters, onCart,  ac
             >
                 Кошик
                &nbsp;
-                <span className={css.cartSpan}>{0}</span>
+                <span className={css.cartSpan}>{null ? 0 : selectedLength}</span>
             </button>
 
         </div>

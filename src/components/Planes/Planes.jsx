@@ -52,7 +52,8 @@ export function Planes({
     type,
     price,
     description,
-    onActiveId
+    onActiveId,
+    indicesSelectedModels
 }) {
     function printlActualimages(urlActual) {
         urlActual.map
@@ -122,12 +123,24 @@ export function Planes({
             />
             <button
                 disabled={urlActual[0] === template}
-                className={urlActual[0] === template ? `${css.but} ${css.disabled}` : css.but}
+                className={
+                    urlActual[0] === template
+                        ? `${css.but} ${css.disabled}`
+                        : indicesSelectedModels.includes(id)
+                            ? `${css.but} ${css.red}`
+                            : `${css.but}`
+                }
                 type="button"
                 // onClick={() => { console.log("Мене додали до кошику: ", id )}}
                 onClick={() => { onActiveId(id) }}
+            // style={
+            //     indicesSelectedModels.includes(id)
+            //     ? color: red : color: green
+            // }
             >
-                Додати до кошику
+                {indicesSelectedModels.includes(id)
+                    ? "❌ Видалити із кошика" : "✅ Додати до кошику"
+                }
             </button>
         </>
     );
