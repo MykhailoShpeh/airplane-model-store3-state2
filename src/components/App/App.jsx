@@ -24,7 +24,7 @@ export class App extends Component {
     activeButton: "allButton",
     // activeButtonIndex: null,
     indicesSelectedModels: [], //! масив індексів обраних моделей
-    selectedModels: [], //! масив обраних моделей
+    // selectedModels: [], //! масив обраних моделей
     isCartButton: false, //! тригер: "якщо активна кнопка «Кошик»"
 
   }
@@ -141,7 +141,7 @@ export class App extends Component {
       });
     }
 
-    this.updateSelectedModels()
+    // this.updateSelectedModels()
   }
 
   //! Формуємо(оновлюємо) масив обраних моделей [selectedModels]
@@ -162,11 +162,14 @@ export class App extends Component {
     //     }))
 
     //todo var.2
-    this.setState(
-        prevState =>
-        ({
-          selectedModels: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
-        }))
+    // this.setState(
+    //     prevState =>
+    //     ({
+    //       selectedModels: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
+    //   }))
+    
+    //todo var.3
+    return this.state.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
   } 
    
 
@@ -195,14 +198,18 @@ export class App extends Component {
       activeButton,
       // activeButtonIndex,
       indicesSelectedModels,
-      selectedModels,
+      // selectedModels,
       isCartButton
     } = this.state;
       
+    //! Формуємо(оновлюємо) масив обраних моделей [selectedModels]
+    // const selectedModels = indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
+    const selectedModels = this.updateSelectedModels();
+
+
     // console.log("activeButtonIndex: ", activeButtonIndex);
     console.log("indicesSelectedModels: ", indicesSelectedModels);
     console.log('selectedModels: ', selectedModels);
-    
 
       return (
         <>

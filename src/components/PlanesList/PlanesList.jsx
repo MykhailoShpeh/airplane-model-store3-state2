@@ -13,6 +13,8 @@ import { getBgColorCSSModule } from '@/utils/getBackgroundColor.js';
 
 export function PlanesList({ items, onActiveId, indicesSelectedModels }) {
     // console.log(getBgColorCSSModule(2000))
+
+    // console.log("items: ", items)
     return (
         <ul
             className={css.list}>
