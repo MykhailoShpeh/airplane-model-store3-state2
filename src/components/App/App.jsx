@@ -148,19 +148,24 @@ export class App extends Component {
   
   updateSelectedModels = () => {
     console.log("Функція updateSelectedModels")
+    //todo var.1
+    // this.state.isCartButton
+    //   ? this.setState(
+    // prevState =>
+    // ({
+    //   aircraftArray: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
+    //     }))
+    //   : this.setState(
+    //     prevState =>
+    //     ({
+    //       selectedModels: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
+    //     }))
 
-    this.state.isCartButton
-      ? this.setState(
-    prevState => 
-    ({
-        // selectedModels: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
-      aircraftArray: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
-        }))
-      : this.setState(
+    //todo var.2
+    this.setState(
         prevState =>
         ({
           selectedModels: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
-          // aircraftArray: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
         }))
   } 
    
@@ -249,12 +254,14 @@ export class App extends Component {
         </Section > */}
           <Section
             // isOn={this.state.isAll}
-
             title={this.state.aircraftTitle}
             bgColor={this.state.bgColor}
           >
             <PlanesList
-              items={this.state.aircraftArray}
+              //todo var.1
+              // items={this.state.aircraftArray}
+              //todo var.2
+              items={this.state.isCartButton ? this.state.selectedModels : this.state.aircraftArray}
               onActiveId={this.getActiveId}
               indicesSelectedModels={this.state.indicesSelectedModels}
             />
