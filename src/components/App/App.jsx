@@ -24,7 +24,8 @@ export class App extends Component {
     activeButton: "allButton",
     activeButtonIndex: null,
     indicesSelectedModels: [], //! масив індексів обраних моделей
-    selectedModels: [] //! масив обраних моделей
+    selectedModels: [], //! масив обраних моделей
+    isCartButton: false, //! тригер: "якщо активна кнопка «Кошик»"
 
   }
 
@@ -39,7 +40,8 @@ export class App extends Component {
       bgColor: 'green',
       aircraftTitle: "Магазин моделей літальних апаратів",
       aircraftArray: aircrafts,
-      activeButton: "allButton"
+      activeButton: "allButton",
+      isCartButton: false, //! тригер: "якщо активна кнопка «Кошик»"
     });
     console.log("aircraftArray: ", aircrafts);
   };
@@ -55,7 +57,8 @@ export class App extends Component {
       bgColor: 'yellow',
       aircraftTitle: "Магазин моделей літаків",
       aircraftArray: planesArray,
-      activeButton: "planesButton"
+      activeButton: "planesButton",
+      isCartButton: false, //! тригер: "якщо активна кнопка «Кошик»"
     });
   };
 
@@ -70,7 +73,8 @@ export class App extends Component {
       bgColor: '#f59aa9',
       aircraftTitle: "Магазин моделей біпланів",
       aircraftArray: biplanesArray,
-      activeButton: "biplanesButton"
+      activeButton: "biplanesButton",
+      isCartButton: false, //! тригер: "якщо активна кнопка «Кошик»"
     });
   };
 
@@ -86,7 +90,8 @@ export class App extends Component {
       bgColor: 'lightblue',
       aircraftTitle: "Магазин моделей вертольотів",
       aircraftArray: helicoptersArray,
-      activeButton: "helicoptersButton"
+      activeButton: "helicoptersButton",
+      isCartButton: false, //! тригер: "якщо активна кнопка «Кошик»"
     });
 
   }
@@ -103,13 +108,13 @@ export class App extends Component {
         aircraftTitle: "Кошик",
         aircraftArray: this.state.selectedModels,
         activeButton: "cartButton",
-
+        isCartButton: true, //! тригер: "якщо активна кнопка «Кошик»"
       });
     }
   
   getActiveId = (id) => {
     console.log("id: ", id)
-    
+    //! треба створити триггер, який аналізує де натиснута кнопка додати до кошику
     this.setState({
       activeButtonIndex: id,
     })
@@ -144,12 +149,21 @@ export class App extends Component {
   updateSelectedModels = () => {
     console.log("Функція updateSelectedModels")
 
-    this.setState(
+    this.state.isCartButton
+      ? this.setState(
     prevState => 
     ({
-      selectedModels: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id ))
-    }))
-  }
+        // selectedModels: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
+      aircraftArray: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
+        }))
+      : this.setState(
+        prevState =>
+        ({
+          selectedModels: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
+          // aircraftArray: prevState.indicesSelectedModels.flatMap((item) => aircrafts.filter((el) => item === el.id))
+        }))
+  } 
+   
 
     //!Фільтрація var.2 
     // allFiltration = () => {
