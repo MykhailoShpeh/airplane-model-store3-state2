@@ -189,9 +189,14 @@ export class App extends Component {
   render() {
 
     const {
+      bgColor,
+      aircraftTitle,
+      aircraftArray,
+      activeButton,
       activeButtonIndex,
       indicesSelectedModels,
-      selectedModels
+      selectedModels,
+      isCartButton
     } = this.state;
       
     console.log("activeButtonIndex: ", activeButtonIndex);
@@ -235,8 +240,8 @@ export class App extends Component {
             onHelicopters={this.helicopterFiltration}
             onCart={this.cartFiltration}
             //! Візуалізація активної кнопки 
-            activeButton={this.state.activeButton}
-            selectedLength={this.state.indicesSelectedModels.length}
+            activeButton={activeButton}
+            selectedLength={indicesSelectedModels.length}
           />
           {/* <Section
           isOn={this.state.isPlanes}
@@ -254,16 +259,16 @@ export class App extends Component {
         </Section > */}
           <Section
             // isOn={this.state.isAll}
-            title={this.state.aircraftTitle}
-            bgColor={this.state.bgColor}
+            title={aircraftTitle}
+            bgColor={bgColor}
           >
             <PlanesList
               //todo var.1
-              // items={this.state.aircraftArray}
+              // items={aircraftArray}
               //todo var.2
-              items={this.state.isCartButton ? this.state.selectedModels : this.state.aircraftArray}
+              items={isCartButton ? selectedModels : aircraftArray}
               onActiveId={this.getActiveId}
-              indicesSelectedModels={this.state.indicesSelectedModels}
+              indicesSelectedModels={indicesSelectedModels}
             />
           </Section >
           {/* <Section
