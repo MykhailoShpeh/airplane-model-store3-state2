@@ -99,13 +99,15 @@ export class App extends Component {
     cartFiltration = () => {
       console.log("Корзина")
 
+    const title = this.state.indicesSelectedModels.length === 0 ? "Додайте товари до кошика" : "Кошик"
+
       // console.log("cartArray: ", cartArray);
       this.setState({
         // isAll: false,
         // isPlanes: false,
         // isHelicopters: true,
         bgColor: 'lightblue',
-        aircraftTitle: "Кошик",
+        aircraftTitle: title,
         aircraftArray: this.state.selectedModels,
         activeButton: "cartButton",
         isCartButton: true, //! тригер: "якщо активна кнопка «Кошик»"
