@@ -22,7 +22,7 @@ export class App extends Component {
     buttonBackground: "",
     //! Візуалізація активної кнопки 
     activeButton: "allButton",
-    activeButtonIndex: null,
+    // activeButtonIndex: null,
     indicesSelectedModels: [], //! масив індексів обраних моделей
     selectedModels: [], //! масив обраних моделей
     isCartButton: false, //! тригер: "якщо активна кнопка «Кошик»"
@@ -115,9 +115,9 @@ export class App extends Component {
   getActiveId = (id) => {
     console.log("id: ", id)
     //! треба створити триггер, який аналізує де натиснута кнопка додати до кошику
-    this.setState({
-      activeButtonIndex: id,
-    })
+    // this.setState({
+    //   activeButtonIndex: id,
+    // })
 
     if (this.state.indicesSelectedModels.includes(id)) {
       console.log("Такий індекс вже є,тоді ВИДАЛЯЄМО його!❌");
@@ -193,13 +193,13 @@ export class App extends Component {
       aircraftTitle,
       aircraftArray,
       activeButton,
-      activeButtonIndex,
+      // activeButtonIndex,
       indicesSelectedModels,
       selectedModels,
       isCartButton
     } = this.state;
       
-    console.log("activeButtonIndex: ", activeButtonIndex);
+    // console.log("activeButtonIndex: ", activeButtonIndex);
     console.log("indicesSelectedModels: ", indicesSelectedModels);
     console.log('selectedModels: ', selectedModels);
     
